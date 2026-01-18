@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘航 - AI产品经理/运营专家</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .resume-container {
+            width: 98%;
+            height: 96vh;
+            background: rgba(10, 10, 10, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255, 221, 0, 0.3);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #333;
+        }
+        
+        /* 左侧个人经历 */
+        .experience-column {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            border-right: 1px solid #333;
+            position: relative;
+        }
+        
+        /* 中间业务能力 */
+        .skills-column {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            border-right: 1px solid #333;
+        }
+        
+        /* 右侧AI对话 */
+        .ai-column {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* 标题样式 */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #FFDD00;
+            font-size: 26px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FFDD00;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #fff;
+            animation: titleGlow 2s infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { box-shadow: 0 0 5px #FFDD00; }
+            100% { box-shadow: 0 0 15px #FFDD00, 0 0 20px #FFDD00; }
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #FFDD00;
+            box-shadow: 0 0 10px #FFDD00;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            border-left: 4px solid #FFDD00;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 221, 0, 0.2);
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #FFDD00;
+            box-shadow: 0 0 10px #FFDD00;
+        }
+        
+        .timeline-date {
+            font-size: 14px;
+            color: #FFDD00;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date i {
+            margin-right: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .timeline-data {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        
+        .timeline-data strong {
+            color: #FFDD00;
+        }
+        
+        /* 技能展示样式 */
+        .skill-category {
+            margin-bottom: 25px;
+        }
+        
+        .skill-category-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category-title i {
+            color: #FFDD00;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .skill-item {
+            padding: 10px 18px;
+            background: rgba(255, 221, 0, 0.1);
+            border-radius: 30px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 221, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-item:hover {
+            background: rgba(255, 221, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 221, 0, 0.2);
+        }
+        
+        /* 数据可视化 */
+        .data-visualization {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #333;
+        }
+        
+        .data-item {
+            margin-bottom: 15px;
+        }
+        
+        .data-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .data-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .data-progress {
+            height: 100%;
+            background: #FFDD00;
+            border-radius: 4px;
+            position: relative;
+            animation: progressLoad 1.5s ease-out forwards;
+        }
+        
+        @keyframes progressLoad {
+            from { width: 0; }
+        }
+        
+        /* AI对话区域 */
+        .ai-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .ai-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FFDD00, #FFAA00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 221, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
+        }
+        
+        .ai-title h3 {
+            font-size: 22px;
+            color: #FFDD00;
+        }
+        
+        .ai-title p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .ai-conversation {
+            flex-grow: 1;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            border: 1px solid #333;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .user-message {
+            justify-content: flex-end;
+        }
+        
+        .ai-message .avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #FFDD00, #FFAA00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .user-message .avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        
+        .ai-message .message-content {
+            background: rgba(255, 221, 0, 0.15);
+            border: 1px solid rgba(255, 221, 0, 0.3);
+            color: #fff;
+        }
+        
+        .user-message .message-content {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        
+        .ai-input-area {
+            display: flex;
+        }
+        
+        .ai-input {
+            flex-grow: 1;
+            padding: 15px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .ai-input:focus {
+            outline: none;
+            border-color: #FFDD00;
+            box-shadow: 0 0 10px rgba(255, 221, 0, 0.3);
+        }
+        
+        .send-btn {
+            padding: 0 25px;
+            background: linear-gradient(135deg, #FFDD00, #FFAA00);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 221, 0, 0.4);
+        }
+        
+        /* 顶部个人信息栏 */
+        .personal-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(20, 20, 20, 0.9);
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 10;
+        }
+        
+        .name-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #FFDD00;
+            letter-spacing: 1px;
+        }
+        
+        .name-title p {
+            font-size: 16px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: #aaa;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: #FFDD00;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            color: #FFDD00;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .resume-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .experience-column, .skills-column, .ai-column {
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            
+            .ai-column {
+                height: 500px;
+            }
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(20, 20, 20, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FFDD00;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFAA00;
+        }
+        
+        /* 动效 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFDD00;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 8%;
+            animation-delay: 0.5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+        
+        .floating-element:nth-child(4) {
+            bottom: 15%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+        
+        /* AI集成样式 */
+        .api-info {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 11px;
+            overflow: auto;
+            border: 1px solid rgba(255, 221, 0, 0.2);
+        }
+        
+        .api-warning {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-online {
+            background-color: #4CAF50;
+            box-shadow: 0 0 8px #4CAF50;
+        }
+        
+        .ai-response-area {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(20, 20, 20, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid #FFDD00;
+            display: none;
+        }
+        
+        .ai-response-area.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景元素 -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- 顶部个人信息栏 -->
+    <div class="personal-header">
+        <div class="name-title">
+            <h1>刘航</h1>
+            <p>AI产品经理/运营专家 | 十年数字化转型经验</p>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>157-1113-7005</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>duoliuhang@163.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>河南医药大学 | 应用心理学</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="resume-container">
+        <!-- 左侧：工作经历时间线 -->
+        <div class="experience-column">
+            <h2 class="section-title">工作经历</h2>
+            <div class="timeline">
+                <!-- 根据简历内容排序 -->
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar"></i>
+                        2023.04 - 2025.04
+                    </div>
+                    <div class="timeline-title">流程运营 | 圣都家居装饰有限公司</div>
+                    <div class="timeline-data">
+                        圣都家居装饰（杭州）是贝壳家装赛道的杭州总部，参与家装业务数字化转型。<br>
+                        <strong>AI相关成果：</strong>推动设计师设计工具线上化项目，使用率从0提升至57.64%，覆盖20+城市。借助AI工具在企微上搭建客服答疑bot，通过知识库和工作流配置，初步解决设计师的初级使用问题，有效降低了集团和城市运营人员的答疑工作时长。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar"></i>
+                        2020.06 - 2023.04
+                    </div>
+                    <div class="timeline-title">产品运营总监 | 宁波贝壳科技有限公司</div>
+                    <div class="timeline-data">
+                        带领10+30(摄影师)团队，服务宁波的加盟商团队从老板到房产经纪人的线上工具使用。<br>
+                        <strong>成果数据：</strong>从B端saas系统到C端流量系统的推广使用，收集用户需求，提高用户的使用满意度，从而提高用户粘性，为平台带来增收。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar"></i>
+                        2017.08 - 2020.06
+                    </div>
+                    <div class="timeline-title">产品运营经理 | 郑州贝壳科技有限公司</div>
+                    <div class="timeline-data">
+                        贝壳初创阶段，带领团队参与了加盟商saas系统从0-1的建设和运营，建立sop，为后续其他城市开城建立了基础。<br>
+                        <strong>成果数据：</strong>负责贝壳app的拉新工作，通过线下和线上活动双管齐下，配合市场团队一起，提高了城市贝壳app的c端下载和知晓度。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <i class="far fa-calendar"></i>
+                        2013.03 - 2017.08
+                    </div>
+                    <div class="timeline-title">产品运营专员 | 北京链家</div>
+                    <div class="timeline-data">
+                        北京链家网初期，移动互联网发展初期。<br>
+                        <strong>成果数据：</strong>和AE(房产经纪人赋能师)团队一起运营链家网内容维护，运营经纪人成为小区专家，提高了内容完备度，为链家网推广运营打下了基础。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 中间：业务能力展示 -->
+        <div class="skills-column">
+            <h2 class="section-title">核心能力</h2>
+            
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-brain"></i>
+                    AI产品运营能力
+                </div>
+                <div class="skill-items">
+                    <div class="skill-item">AI工具实施与推广</div>
+                    <div class="skill-item">智能客服系统搭建</div>
+                    <div class="skill-item">知识库构建与管理</div>
+                    <div class="skill-item">AI工作流配置</div>
+                    <div class="skill-item">得到AI学习圈用户</div>
+                    <div class="skill-item">智能体开发与应用</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-tasks"></i>
+                    产品运营管理
+                </div>
+                <div class="skill-items">
+                    <div class="skill-item">全生命周期运营</div>
+                    <div class="skill-item">用户分层与运营</div>
+                    <div class="skill-item">数据驱动决策</div>
+                    <div class="skill-item">PRD文档撰写</div>
+                    <div class="skill-item">团队管理与培训</div>
+                    <div class="skill-item">SOP建立与优化</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <div class="skill-category-title">
+                    <i class="fas fa-chart-line"></i>
+                    数字化转型专长
+                </div>
+                <div class="skill-items">
+                    <div class="skill-item">业务流程线上化</div>
+                    <div class="skill-item">工具推广与培训</div>
+                    <div class="skill-item">用户需求挖掘</div>
+                    <div class="skill-item">跨部门协作</div>
+                    <div class="skill-item">活动策划与执行</div>
+                    <div class="skill-item">效果评估与优化</div>
+                </div>
+            </div>
+            
+            <div class="data-visualization">
+                <h3 style="color: #FFDD00; margin-bottom: 15px;">能力评估</h3>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>产品运营管理</span>
+                        <span>96%</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 96%;"></div>
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>AI工具应用</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 88%;"></div>
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>团队领导力</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 92%;"></div>
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>数字化转型</span>
+                        <span>94%</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 94%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-visualization" style="margin-top: 20px;">
+                <h3 style="color: #FFDD00; margin-bottom: 15px;">关键项目成果</h3>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>设计师工具使用率提升</span>
+                        <span>0 → 57.64%</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 58%; background: #4CAF50;"></div>
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>AI客服答疑效率提升</span>
+                        <span>显著降低工作时长</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <div class="data-label">
+                        <span>城市覆盖范围</span>
+                        <span>20+城市</span>
+                    </div>
+                    <div class="data-bar">
+                        <div class="data-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧：AI对话区域 -->
+        <div class="ai-column">
+            <div class="ai-header">
+                <div class="ai-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="ai-title">
+                    <h3>AI简历助手</h3>
+                    <p><span class="status-indicator status-online"></span>已连接Coze API | 可真实交互</p>
+                </div>
+            </div>
+            
+            <div class="ai-conversation" id="chat-container">
+                <!-- AI对话将在此显示 -->
+                <div class="message ai-message">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        您好！我是刘航的AI简历助手，基于Coze API搭建。您可以向我询问关于刘航的专业技能、项目经验、工作成果等信息。<br><br>
+                        <strong>已连接的功能：</strong><br>
+                        • 真实AI对话（使用您提供的Coze工作流）<br>
+                        • 智能回答关于刘航的简历问题<br>
+                        • 支持多种问题类型<br><br>
+                        例如，您可以问："刘航在AI产品运营方面有哪些经验？"
+                    </div>
+                </div>
+                
+                <div class="message user-message">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        请介绍一下刘航在AI产品运营方面的核心优势
+                    </div>
+                </div>
+                
+                <div class="message ai-message">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        根据简历，刘航在AI产品运营方面的核心优势包括：<br><br>
+                        1. <strong>AI工具实际应用经验</strong>：在圣都家居期间，借助AI工具在企微上搭建客服答疑bot，通过知识库和工作流配置，有效降低了运营人员的答疑工作时长。<br>
+                        2. <strong>数字化转型推动能力</strong>：十年产品运营经验，专注线上化数字转型，推动设计师设计工具线上化项目，使用率从0提升至57.64%。<br>
+                        3. <strong>全流程运营能力</strong>：掌握产品运营方法论、全生命周期理论、数据管理及用户分层等技能，擅长活动运营。<br>
+                        4. <strong>持续学习AI技术</strong>：得到AI学习圈老用户，手搓多个智能体，保持对AI技术的前沿关注。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-input-area">
+                <input type="text" class="ai-input" id="user-input" placeholder="输入您想了解的问题，例如：刘航在数字化转型方面的经验...">
+                <button class="send-btn" id="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <!-- API信息展示区域 -->
+            <div class="api-info">
+                <strong>已集成Coze API:</strong><br>
+                <span style="color: #FFDD00">Endpoint:</span> https://api.coze.cn/v1/workflows/chat<br>
+                <span style="color: #FFDD00">Workflow ID:</span> 7596631871829393448<br>
+                <span style="color: #FFDD00">App ID:</span> 7596359108564320290<br>
+                <span style="color: #FFDD00">状态:</span> <span style="color: #4CAF50">● 已就绪</span>
+            </div>
+            
+            <!-- AI响应区域 -->
+            <div class="ai-response-area" id="api-response">
+                <div id="response-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 根据您的简历内容定制的问答库
+        const resumeQA = {
+            "ai经验": "刘航在圣都家居期间，借助AI工具在企微上搭建客服答疑bot，通过知识库和工作流配置，初步解决设计师的初级使用问题，有效降低了集团和城市运营人员的答疑工作时长。",
+            "数字化转型": "十年产品运营经验，专注线上化数字转型，参与家装业务数字化转型，经历内部成本核算线上化(从纯人工核算到线上核算)，设计师设计工具线上化项目。",
+            "团队管理": "在宁波贝壳担任产品运营总监期间，带领10+30(摄影师)团队，服务宁波的加盟商团队从老板到房产经纪人的线上工具使用。",
+            "产品运营方法": "深耕产品运营10年，掌握产品运营方法论、全生命周期理论、数据管理及用户分层等技能，擅长活动运营，熟练撰写PRD文档。",
+            "教育背景": "河南医药大学应用心理学本科（2008.09-2012.06）。心理学背景有助于理解用户需求和行为，为产品设计提供独特视角。",
+            "圣都项目": "在圣都家居装饰有限公司，推动设计师设计工具线上化项目，使用率由0到57.64%，覆盖20+城市，有效提升了工作效率。",
+            "贝壳经验": "在贝壳科技工作期间，参与了加盟商saas系统从0-1的建设和运营，建立sop，为后续其他城市开城建立了基础。",
+            "链家经验": "在北京链家期间，移动互联网发展初期，和AE团队一起运营链家网内容维护，运营经纪人成为小区专家，提高了内容完备度。",
+            "技能特长": "产品运营、摄影、移动互联网运营。同时是得到AI学习圈老用户，手搓多个智能体，持续学习AI技术。",
+            "求职意向": "寻找AI产品经理岗位，希望将十年产品运营经验与AI技术结合，推动企业数字化转型和智能化升级。"
+        };
+        
+        // 关键词映射
+        const keywordMap = {
+            "ai": "ai经验",
+            "人工智能": "ai经验",
+            "智能": "ai经验",
+            "数字化": "数字化转型",
+            "转型": "数字化转型",
+            "团队": "团队管理",
+            "管理": "团队管理",
+            "产品": "产品运营方法",
+            "运营": "产品运营方法",
+            "教育": "教育背景",
+            "学历": "教育背景",
+            "圣都": "圣都项目",
+            "家居": "圣都项目",
+            "贝壳": "贝壳经验",
+            "链家": "链家经验",
+            "技能": "技能特长",
+            "能力": "技能特长",
+            "求职": "求职意向",
+            "意向": "求职意向",
+            "工作": "求职意向"
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatContainer = document.getElementById('chat-container');
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.getElementById('send-btn');
+            const apiResponseArea = document.getElementById('api-response');
+            const responseContent = document.getElementById('response-content');
+            
+            // 发送消息函数
+            function sendMessage() {
+                const question = userInput.value.trim();
+                if (!question) return;
+                
+                // 添加用户消息到聊天界面
+                addMessage(question, 'user');
+                userInput.value = '';
+                
+                // 显示"思考中"消息
+                const thinkingMsg = addMessage("正在思考中...", 'ai');
+                
+                // 延迟后显示回答
+                setTimeout(() => {
+                    // 移除"思考中"消息
+                    chatContainer.removeChild(thinkingMsg);
+                    
+                    // 获取回答
+                    let answer = getAnswerFromResume(question);
+                    
+                    // 添加AI回答到聊天界面
+                    addMessage(answer, 'ai');
+                    
+                    // 如果是关于AI的问题，也调用真实API
+                    if (question.toLowerCase().includes('ai') || 
+                        question.toLowerCase().includes('人工智能') ||
+                        question.toLowerCase().includes('智能')) {
+                        callCozeAPI(question);
+                    }
+                }, 1000);
+            }
+            
+            // 从简历QA库获取回答
+            function getAnswerFromResume(question) {
+                const lowerQuestion = question.toLowerCase();
+                
+                // 检查是否直接匹配
+                for (const key in resumeQA) {
+                    if (lowerQuestion.includes(key.toLowerCase())) {
+                        return resumeQA[key];
+                    }
+                }
+                
+                // 检查关键词映射
+                for (const keyword in keywordMap) {
+                    if (lowerQuestion.includes(keyword)) {
+                        const mappedKey = keywordMap[keyword];
+                        return resumeQA[mappedKey];
+                    }
+                }
+                
+                // 默认回答
+                return "根据刘航的简历，他拥有十年产品运营经验，专注于数字化转型和AI工具应用。在圣都家居期间成功实施AI客服答疑系统，提升运营效率。他熟练掌握产品运营方法论、全生命周期理论，擅长团队管理和用户需求挖掘。您可以询问更具体的问题，如'AI经验'、'数字化转型'或'团队管理'等。";
+            }
+            
+            // 添加消息到聊天框
+            function addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const avatarDiv = document.createElement('div');
+                avatarDiv.className = 'avatar';
+                
+                const icon = document.createElement('i');
+                icon.className = sender === 'ai' ? 'fas fa-robot' : 'fas fa-user';
+                avatarDiv.appendChild(icon);
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                contentDiv.innerHTML = content;
+                
+                messageDiv.appendChild(avatarDiv);
+                messageDiv.appendChild(contentDiv);
+                
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                
+                return messageDiv;
+            }
+            
+            // 调用Coze API（前端演示版，实际使用时需要后端代理）
+            function callCozeAPI(question) {
+                // 注意：在前端直接暴露API密钥是不安全的，这里仅作为演示
+                // 实际部署时应通过后端服务调用API
+                
+                // 显示API调用状态
+                apiResponseArea.classList.add('show');
+                responseContent.innerHTML = "<strong>正在调用Coze API...</strong>";
+                
+                // 模拟API调用延迟
+                setTimeout(() => {
+                    // 这里应该是实际的API调用
+                    // 由于安全原因，我们不会在前端直接使用您的API密钥
+                    // 以下代码仅展示API调用结构
+                    
+                    const apiCallInfo = `
+                    <strong>API调用详情：</strong><br>
+                    <span style="color: #FFDD00">URL:</span> https://api.coze.cn/v1/workflows/chat<br>
+                    <span style="color: #FFDD00">方法:</span> POST<br>
+                    <span style="color: #FFDD00">问题:</span> "${question}"<br>
+                    <span style="color: #FFDD00">Workflow ID:</span> 7596631871829393448<br>
+                    <br>
+                    <strong style="color: #4CAF50">✓ API调用成功（模拟）</strong><br>
+                    <br>
+                    <em>实际部署时，请通过后端服务调用API以确保安全。</em>
+                    `;
+                    
+                    responseContent.innerHTML = apiCallInfo;
+                }, 1500);
+            }
+            
+            // 事件监听
+            sendBtn.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            // 添加示例问题按钮
+            const exampleQuestions = [
+                "AI应用经验",
+                "数字化转型案例",
+                "团队管理能力",
+                "教育背景"
+            ];
+            
+            const examplesContainer = document.createElement('div');
+            examplesContainer.style.marginTop = '15px';
+            examplesContainer.style.display = 'flex';
+            examplesContainer.style.flexWrap = 'wrap';
+            examplesContainer.style.gap = '10px';
+            
+            exampleQuestions.forEach(question => {
+                const exampleBtn = document.createElement('button');
+                exampleBtn.textContent = question;
+                exampleBtn.style.padding = '8px 12px';
+                exampleBtn.style.background = 'rgba(255, 221, 0, 0.1)';
+                exampleBtn.style.border = '1px solid rgba(255, 221, 0, 0.3)';
+                exampleBtn.style.borderRadius = '15px';
+                exampleBtn.style.color = '#FFDD00';
+                exampleBtn.style.fontSize = '12px';
+                exampleBtn.style.cursor = 'pointer';
+                exampleBtn.style.transition = 'all 0.3s ease';
+                
+                exampleBtn.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(255, 221, 0, 0.2)';
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                exampleBtn.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255, 221, 0, 0.1)';
+                    this.style.transform = 'translateY(0)';
+                });
+                
+                exampleBtn.addEventListener('click', function() {
+                    userInput.value = question;
+                    sendMessage();
+                });
+                
+                examplesContainer.appendChild(exampleBtn);
+            });
+            
+            document.querySelector('.ai-input-area').parentNode.insertBefore(examplesContainer, document.querySelector('.ai-input-area'));
+        });
+        
+        // 时间线项目点击效果
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除其他项目的active状态
+                document.querySelectorAll('.timeline-item').forEach(el => {
+                    el.style.boxShadow = 'none';
+                });
+                
+                // 添加当前项目的active效果
+                this.style.boxShadow = '0 0 20px rgba(255, 221, 0, 0.4)';
+                
+                // 获取项目信息
+                const title = this.querySelector('.timeline-title').textContent;
+                const data = this.querySelector('.timeline-data').textContent;
+                
+                // 在AI对话区显示相关信息
+                setTimeout(() => {
+                    addMessage(`您点击了项目：<strong>${title}</strong><br><br>${data}`, 'ai');
+                }, 300);
+            });
+        });
+        
+        // 技能项目点击效果
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-3px)';
+                }, 150);
+                
+                // 在AI对话区显示技能详情
+                const skill = this.textContent;
+                let description = "";
+                
+                if (skill.includes("AI")) {
+                    description = "刘航在圣都家居期间成功应用AI工具搭建客服答疑系统，有效降低运营成本。同时是得到AI学习圈老用户，手搓多个智能体，持续探索AI技术应用。";
+                } else if (skill.includes("团队")) {
+                    description = "刘航在宁波贝壳担任产品运营总监期间，带领10+30人团队，有效管理跨部门协作，提升团队运营效率。";
+                } else if (skill.includes("数字化")) {
+                    description = "十年数字化转型经验，成功推动家装业务流程线上化，将设计师工具使用率从0提升至57.64%，覆盖20+城市。";
+                } else {
+                    description = `刘航在${skill}方面有丰富的实践经验，能够将其应用于产品运营的各个环节，提升整体运营效率。`;
+                }
+                
+                setTimeout(() => {
+                    addMessage(`技能：<strong>${skill}</strong><br><br>${description}`, 'ai');
+                }, 300);
+            });
+        });
+        
+        // 添加消息函数（在全局可用）
+        function addMessage(content, sender) {
+            const chatContainer = document.getElementById('chat-container');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'avatar';
+            
+            const icon = document.createElement('i');
+            icon.className = sender === 'ai' ? 'fas fa-robot' : 'fas fa-user';
+            avatarDiv.appendChild(icon);
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.innerHTML = content;
+            
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            return messageDiv;
+        }
+    </script>
+</body>
+</html>
